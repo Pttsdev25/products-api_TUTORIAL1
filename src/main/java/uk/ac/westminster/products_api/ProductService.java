@@ -30,7 +30,7 @@ public class ProductService {
 
     public Optional<Product> getProductById(Long id) {
         return products.stream().filter(p -> p.getId().equals(id)).findFirst();  //((  -> Lambda operator;given this product, check the following.))
-//.eqauls instead of == ; coz == compares references, not values.
+//.equals instead of == ; coz == compares references, not values.
     }
 
 
