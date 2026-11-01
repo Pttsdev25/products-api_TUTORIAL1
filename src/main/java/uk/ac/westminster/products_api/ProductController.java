@@ -24,9 +24,11 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product addProduct(@RequestBody Product product) {
+    public Product addProduct(@RequestBody DigitalProduct product) {
         return productService.addProduct(product);
     }
+    //product is abstract, so Jackson cannot create JSON directly.
+    //using DigitalProduct Temporarily
 
     @DeleteMapping("/products/{id}")
     public void deleteProduct(@PathVariable Long id){
@@ -36,5 +38,10 @@ public class ProductController {
     @GetMapping("/products/search")
     public List<Product> search(@RequestParam String name){
         return productService.findByName(name);
+    }
+
+    @GetMapping("/products/summaries")
+    public List <String> getSummaries(){
+        return productService.getAllSummaries();
     }
 }

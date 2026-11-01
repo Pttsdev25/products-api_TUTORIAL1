@@ -41,4 +41,16 @@ public class ProductService {
     public List<Product> findByName(String name){
        return products.stream().filter(p->p.getName().contains(name)).toList();
     }
+
+    public List<String> getAllSummaries(){
+        List <String> summaries= new ArrayList<>();
+        for(Product p: products) {
+            //for each Product called p, in product list
+            summaries.add(p.getSummary());
+            //p.applyDiscount(0.10);- doesnt compile, p of Product type doesn't have applyDiscount() method
+            // if (p instanceof Discountable d {d.applyDiscount(0.10);} - compiles because, it checks the object referring p implements,
+            // discountable interface. by creating a variable d of discountable, it called discount method
+        }
+        return  summaries;
+    }
 }
